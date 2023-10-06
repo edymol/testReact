@@ -6,23 +6,33 @@ const CAT_FACT_RANDOM = "https://catfact.ninja/fact";
 
 const CAT_IMAGE_URL = "https://cataas.com/";
 export function App() {
-    const [fact, setFact] = useState("fact cat fetch fact");
+    const [fact, setFact] = useState("");
     const [imageUrl, setImageUrl] = useState("");
-
-    // this effect runs when the fact is gathered
-    useEffect(() => {
-        // async function getCatFact() {
-        //     const res = await fetch(CAT_FACT_RANDOM);
-        //     const data = await res.json();
-        //     setFact(data.fact);
-        // }
+    const getCatFact = () => {
         fetch(CAT_FACT_RANDOM)
             .then((response) => response.json())
             .then((data) => {
                 const { fact } = data;
                 setFact(fact);
             });
-    }, []);
+    };
+
+    // this effect runs when the fact is gathered
+    useEffect(getCatFact, []);
+    // () => {
+        
+        // async function getCatFact() {
+        //     const res = await fetch(CAT_FACT_RANDOM);
+        //     const data = await res.json();
+        //     setFact(data.fact);
+        // }
+        // fetch(CAT_FACT_RANDOM)
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         const { fact } = data;
+        //         setFact(fact);
+        //     });
+    // }, []);
 
     // this effect runs when the image is gathered
 
@@ -42,9 +52,14 @@ export function App() {
             });
     }, [fact]);
 
+    const handleClick = () => {
+        getCatFact();
+    }
+
     return (
         <main>
             <h1>Kitten app</h1>
+            <button onClick={handleClick}>Get a new fact</button>
             {fact && <p>{fact}</p>}
             {imageUrl && (
                 <img
