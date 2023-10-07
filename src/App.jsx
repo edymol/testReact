@@ -40,7 +40,6 @@ export function App() {
         if (!fact) return;
 
         const firstWords = fact.split(" ", 5).join(" ");
-        console.log(firstWords);
 
         fetch(
             `https://cataas.com/cat/says/${firstWords}?size=50&color=red&json=true`
