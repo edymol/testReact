@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 // Use the function keyword or arrow function syntax and start component name with a capital letter
-export function ToDo() {
+function ToDo() {
   const [action, setAction] = useState([]);
 
   useEffect(() => {
@@ -31,4 +31,5 @@ export function ToDo() {
   );
 }
 
+export default ToDo;
 

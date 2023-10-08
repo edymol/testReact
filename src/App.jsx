@@ -5,7 +5,7 @@ const CAT_FACT_RANDOM = "https://catfact.ninja/fact";
 // const CAT_IMAGE_URL = `https://cataas.com/cat/says/{firstWord}?size=50&color=red&json=true`;
 
 const CAT_IMAGE_URL = "https://cataas.com/";
-export function App() {
+function App() {
     const [fact, setFact] = useState("");
     const [imageUrl, setImageUrl] = useState("");
     const getCatFact = () => {
@@ -69,3 +69,5 @@ export function App() {
         </main>
     );
 }
+
+export default App;
